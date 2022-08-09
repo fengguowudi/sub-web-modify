@@ -444,12 +444,12 @@ export default {
               {
                 label: "酷酷精简规则",
                 value:
-                  "https://github.com/xiaoshenxian233/cool/blob/rule/coolcool.ini"
+                  "https://cdn.staticaly.com/gh/xiaoshenxian233/cool/rule/coolcool.ini"
               },
               {
                 label: "酷酷复合规则",
                 value:
-                  "https://github.com/xiaoshenxian233/cool/blob/rule/complex.ini"
+                  "https://cdn.staticaly.com/gh/xiaoshenxian233/cool/rule/complex.ini"
               }
             ]
           },
@@ -459,17 +459,17 @@ export default {
               {
                 label: "つつ-全分组",
                 value:
-                  "https://cdn.jsdelivr.net/gh/lhl77/sub-ini@main/tsutsu-full.ini"
+                  "https://cdn.staticaly.com/gh/lhl77/sub-ini@main/tsutsu-full.ini"
               },
               {
                 label: "つつ-全分组-地区自动选择",
                 value:
-                  "https://cdn.jsdelivr.net/gh/lhl77/sub-ini@main/tsutsu-full-urltest.ini"
+                  "https://cdn.staticaly.com/gh/lhl77/sub-ini@main/tsutsu-full-urltest.ini"
               },
               {
                 label: "つつ-超jb精简分组-含国内分流",
                 value:
-                  "https://cdn.jsdelivr.net/gh/lhl77/sub-ini@main/tsutsu-mini-gfw.ini"
+                  "https://cdn.staticaly.com/gh/lhl77/sub-ini@main/tsutsu-mini-gfw.ini"
               }
             ]
           }

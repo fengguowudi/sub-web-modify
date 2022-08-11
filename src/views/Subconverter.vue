@@ -12,7 +12,7 @@
             <svg-icon class="youguan" icon-class="youtube" style="float:right;margin-left:10px" @click="gotoYouTuBe"/>
             <svg-icon class="channel" icon-class="telegram" style="float:right;margin-left: 10px"
                       @click="gotoTgChannel"/>
-            <div style="text-align:center;font-size:15px">jess的订阅转换</div>
+            <div style="text-align:center;font-size:15px">Jess的订阅转换</div>
           </div>
           <el-container>
             <el-form :model="form" label-width="80px" label-position="left" style="width: 100%">
@@ -429,12 +429,12 @@ export default {
         ],
         remoteConfig: [
           {
-            label: "jess自用规则",
+            label: "Jess自用规则",
             options: [
               {
-                label: "jess自用-神机规则",
+                label: "Jess自用-神机规则",
                 value:
-                  "https://gitlab.com/fengguowudi/ini/-/raw/master/jess-sjgz.ini"
+                  "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini"
               }
             ]
           },
@@ -480,7 +480,7 @@ export default {
         clientType: "",
         customBackend: "https://sub.789.st/sub?",
         shortType: "https://d1.mk/short",
-        remoteConfig: "https://gitlab.com/fengguowudi/ini/-/raw/master/jess-sjgz.ini",
+        remoteConfig: "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini",
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",

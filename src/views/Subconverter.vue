@@ -413,7 +413,7 @@ export default {
           "sub.cm": "https://sub.cm/short",
         },
         customBackend: {
-          "789后端": "https://sub.789.st/sub?",
+          "Vercel后端": "https://subc.vercel.app/sub?",
           "边缘API": "https://pub-api-1.bianyuan.xyz/sub?",
           "肥羊后端": "https://api.v1.mk/sub?",
           "肥羊备用后端": "https://sub.d1.mk/sub?",
@@ -421,7 +421,7 @@ export default {
 
         },
         backendOptions: [
-          {value: "https://sub.789.st/sub?"},
+          {value: "https://subc.vercel.app/sub?"},
           {value: "https://pub-api-1.bianyuan.xyz/sub?"},
           {value: "https://api.v1.mk/sub?"},
           {value: "https://sub.d1.mk/sub?"},
@@ -478,7 +478,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "https://sub.789.st/sub?",
+        customBackend: "https://subc.vercel.app/sub?",
         shortType: "https://d1.mk/short",
         remoteConfig: "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini",
         excludeRemarks: "",

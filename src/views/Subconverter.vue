@@ -413,19 +413,22 @@ export default {
           "sub.cm": "https://sub.cm/short",
         },
         customBackend: {
-          "Vercel后端": "https://subc.vercel.app/sub?",
-          "边缘API": "https://pub-api-1.bianyuan.xyz/sub?",
+          "Dlerの专属后端": "https://api.dler.io/sub?",
+          "つつ-国内优化": "https://api.tsutsu.one/sub?",
           "肥羊后端": "https://api.v1.mk/sub?",
           "肥羊备用后端": "https://sub.d1.mk/sub?",
-          "つつ-国内优化": "https://api.tsutsu.one/sub?",
-
+          "sublink后端": "https://api.sublink.dev/sub?",  
+          "品云后端": "https://v.id9.cc/sub?", 
+          "nameless后端": "https://www.nameless13.com/sub?",   
         },
         backendOptions: [
-          {value: "https://subc.vercel.app/sub?"},
-          {value: "https://pub-api-1.bianyuan.xyz/sub?"},
-          {value: "https://api.v1.mk/sub?"},
-          {value: "https://sub.d1.mk/sub?"},
+          {value: "https://api.dler.io/sub?"},
           {value: "https://api.tsutsu.one/sub?"},
+          {value: "https://api.v1.mk/sub?"},
+          {value: "https://sub.d1.mk/sub?"},		  
+          {value: "https://api.sublink.dev/sub?"},
+          {value: "https://v.id9.cc/sub?"},
+          {value: "https://www.nameless13.com/sub?"},
         ],
         remoteConfig: [
           {
@@ -478,7 +481,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "https://subc.vercel.app/sub?",
+        customBackend: "https://api.dler.io/sub?",
         shortType: "https://d1.mk/short",
         remoteConfig: "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini",
         excludeRemarks: "",

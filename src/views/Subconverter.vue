@@ -805,6 +805,23 @@ export default {
           .finally(() => {
             this.loading = false;
           })
+    },
+    getBackendVersion() {
+      this.$axios
+          .get(
+              this.form.customBackend.substring(0, this.form.customBackend.length - 5) + "/version"
+          )
+          .then(res => {
+            this.backendVersion = res.data.replace(/backend\n$/gm, "");
+            this.backendVersion = this.backendVersion.replace("subconverter", "SubConverter");
+            let a = this.form.customBackend.indexOf("api.v1.mk") !== -1 || this.form.customBackend.indexOf("sub.d1.mk") !== -1;
+            let b = this.form.customBackend.indexOf("v.id9.cc") !== -1;
+            let c = this.form.customBackend.indexOf("127.0.0.1") !== -1;
+            a ? this.$message.success(`${this.backendVersion}` + "肥羊后端支持vless+trojan xtls订阅转换") : b ? this.$message.success(`${this.backendVersion}` + "品云后端支持vless+trojan xtls订阅转换") : c ? this.$message.success(`${this.backendVersion}` + "本地局域网自建版后端") : this.$message.success(`${this.backendVersion}` + "官方原版后端不支持vless/trojan xtls订阅转换");
+          })
+          .catch(() => {
+            this.$message.error("请求SubConverter版本号返回数据失败，该后端不可用！");
+          });
     }
   }
 };

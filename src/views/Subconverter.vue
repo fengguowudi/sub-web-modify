@@ -407,17 +407,27 @@ export default {
         },
         shortTypes: {
           "d1.mk": "https://d1.mk/short",
-          "v1.mk": "https://v1.mk/short"
+          "v1.mk": "https://v1.mk/short",
         },
         customBackend: {
-          "つつ-国内优化": "https://api.tsutsu.one/sub?",
           "翻翻墙后端-国内优化": "https://api.ffq.la/sub?",
-          "绿头后端-国内优化": "https://sub-api.greenfishpowered.cn/sub?"
+          "つつ-国内优化": "https://api.tsutsu.one/sub?",
+		  "imkcp后端": "https://api.14tb.com/sub?",
+		  "Dler官方后端": "https://api.dler.io/sub?",
+		  "nameless13提供": "https://www.nameless13.com/sub?",
+		  "sub-web作者提供": "https://api.wcc.best/sub?",
+		  "肥羊后端-vless": "https://api.v1.mk/sub?",
+		  "subconverter作者提供": "https://sub.xeton.dev/sub?",
         },
         backendOptions: [
-          {value: "https://api.tsutsu.one/sub?"},
           {value: "https://api.ffq.la/sub?"},
-          {value: "https://sub-api.greenfishpowered.cn/sub?"}
+          {value: "https://api.tsutsu.one/sub?"},
+          {value: "https://api.14tb.com/sub?"},
+          {value: "https://api.dler.io/sub?"},
+          {value: "https://www.nameless13.com/sub?"},
+          {value: "https://api.wcc.best/sub?"},
+          {value: "https://api.v1.mk/sub?"},
+          {value: "https://sub.xeton.dev/sub?"}	  
         ],
         remoteConfig: [
           {
@@ -470,7 +480,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "https://api.tsutsu.one/sub?",
+        customBackend: "https://api.ffq.la/sub?",
         shortType: "https://d1.mk/short",
         remoteConfig: "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini",
         excludeRemarks: "",
@@ -488,7 +498,7 @@ export default {
         tfo: false,
         sort: false,
         expand: true,
-        scv: false,
+        scv: true,
         fdn: false,
         appendType: false,
         insert: false, // 是否插入默认订阅的节点，对应配置项 insert_url

@@ -411,7 +411,6 @@ export default {
         },
         customBackend: {
 			"つつ-国内优化": "https://api.tsutsu.one/sub?",
-			"imkcp后端": "https://api.14tb.com/sub?",
 			"Dler官方后端": "https://api.dler.io/sub?",
 			"nameless13提供": "https://www.nameless13.com/sub?",
 			"sub-web作者提供": "https://api.wcc.best/sub?",
@@ -420,7 +419,6 @@ export default {
         },
         backendOptions: [
 			{value: "https://api.tsutsu.one/sub?"},
-			{value: "https://api.14tb.com/sub?"},
 			{value: "https://api.dler.io/sub?"},
 			{value: "https://www.nameless13.com/sub?"},
 			{value: "https://api.wcc.best/sub?"},
@@ -529,7 +527,6 @@ export default {
   },
   mounted() {
     this.form.clientType = "clash";
-    this.getBackendVersion();
     this.anhei();
     let lightMedia = window.matchMedia('(prefers-color-scheme: light)');
     let darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
@@ -544,9 +541,6 @@ export default {
     } //监听系统主题，自动切换！
   },
   methods: {
-    selectChanged() {
-      this.getBackendVersion();
-    },
     anhei() {
       const getLocalTheme = window.localStorage.getItem("localTheme");
       const lightMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
@@ -802,23 +796,6 @@ export default {
           .finally(() => {
             this.loading = false;
           })
-    },
-    getBackendVersion() {
-      this.$axios
-          .get(
-              this.form.customBackend.substring(0, this.form.customBackend.length - 5) + "/version"
-          )
-          .then(res => {
-            this.backendVersion = res.data.replace(/backend\n$/gm, "");
-            this.backendVersion = this.backendVersion.replace("subconverter", "SubConverter");
-            let a = this.form.customBackend.indexOf("api.v1.mk") !== -1 || this.form.customBackend.indexOf("sub.d1.mk") !== -1;
-            let b = this.form.customBackend.indexOf("v.id9.cc") !== -1;
-            let c = this.form.customBackend.indexOf("127.0.0.1") !== -1;
-            a ? this.$message.success(`${this.backendVersion}` + "肥羊负载均衡加强后端支持vless+trojan xtls订阅转换") : b ? this.$message.success(`${this.backendVersion}` + "品云实验性后端支持vless+trojan xtls订阅转换") : c ? this.$message.success(`${this.backendVersion}` + "本地局域网自建版后端") : this.$message.success(`${this.backendVersion}` + "官方原版后端不支持vless/trojan xtls订阅转换");
-          })
-          .catch(() => {
-            this.$message.error("请求SubConverter版本号返回数据失败，该后端不可用！");
-          });
     }
   }
 };

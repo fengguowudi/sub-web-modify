@@ -123,8 +123,8 @@
                             <el-col :span="12">
                               <el-checkbox v-model="form.udp" label="启用 UDP"></el-checkbox>
                             </el-col>
-                            <el-col :span="12">
-                              <el-checkbox v-model="form.tls13" label="开启TLS_1.3"></el-checkbox>
+                            <el-col :span="12"> 
+                              <el-checkbox v-model="form.xudp" label="启用 XUDP"></el-checkbox>
                             </el-col>
                           </el-row>
                           <el-row :gutter="10">
@@ -147,8 +147,8 @@
                             <el-col :span="12">
                               <el-checkbox v-model="form.tpl.surge.doh" label="Surge.DoH"></el-checkbox>
                             </el-col>
-                            <el-col :span="12"> 
-                              <el-checkbox v-model="form.surgeForce" label="Surge强制更新"></el-checkbox>
+                            <el-col :span="12">
+                              <el-checkbox v-model="form.tls13" label="开启TLS_1.3"></el-checkbox>
                             </el-col>
                           </el-row>
                           <el-row :gutter="10">
@@ -233,6 +233,13 @@
                     :loading="loading"
                 >进阶自定义配置
                 </el-button>
+                <el-button
+                    style="width: 120px"
+                    type="primary"
+                    @click="dialogLoadConfigVisible = true"
+                    icon="el-icon-copy-document"
+                    :loading="loading"
+                >从URL解析</el-button>
               </el-form-item>
             </el-form>
           </el-container>
@@ -360,6 +367,35 @@
           </div>
         </el-tab-pane>
       </el-tabs>
+    </el-dialog>
+    <el-dialog
+        :visible.sync="dialogLoadConfigVisible"
+        :show-close="false"
+        :close-on-click-modal="false"
+        :close-on-press-escape="false"
+        width="700px">
+      <div slot="title">
+        可以从老的订阅信息中解析信息,填入页面中去
+      </div>
+      <el-form label-position="left">
+        <el-form-item prop="uploadConfig">
+          <el-input
+              v-model="loadConfig"
+              type="textarea"
+              :autosize="{ minRows: 15, maxRows: 15}"
+              maxlength="5000"
+              show-word-limit>
+            </el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="loadConfig = ''; dialogLoadConfigVisible = false">取 消</el-button>
+        <el-button
+            type="primary"
+            @click="confirmLoadConfig"
+            :disabled="loadConfig.length === 0"
+        >确 定</el-button>
+      </div>
     </el-dialog>
   </div>
 </template>
@@ -489,7 +525,7 @@ export default {
         nodeList: false,
         extraset: false,
         tls13: false,
-        surgeForce: false,
+        xudp: false,
         udp: false,
         tfo: false,
         sort: false,
@@ -512,6 +548,8 @@ export default {
       customSubUrl: "",
       customShortSubUrl: "",
       dialogUploadConfigVisible: false,
+      loadConfig: "",
+      dialogLoadConfigVisible: false,
       uploadFilter: "",
       uploadScript: "",
       uploadConfig: "",
@@ -646,10 +684,6 @@ export default {
         this.customSubUrl +=
             "&tls13=" + this.form.tls13.toString();
       }
-      if (this.form.surgeForce) {
-        this.customSubUrl +=
-            "&strict=" + this.form.surgeForce.toString();
-      }
       if (this.form.sort) {
         this.customSubUrl +=
             "&sort=" + this.form.sort.toString();
@@ -659,6 +693,8 @@ export default {
           this.form.emoji.toString() +
           "&list=" +
           this.form.nodeList.toString() +
+          "&xudp=" +
+          this.form.xudp.toString() +
           "&udp=" +
           this.form.udp.toString() +
           "&tfo=" +
@@ -740,6 +776,105 @@ export default {
             this.loading = false;
           });
     },
+    confirmLoadConfig(){
+      // 怎么解析短链接的302和301...
+      if (this.loadConfig.indexOf("target")=== -1){
+        this.$message.error("请输入正确的订阅地址,暂不支持短链接!");
+        return;
+      }
+      let url
+      try {
+        url = new URL(this.loadConfig)
+      } catch (error) {
+        this.$message.error("请输入正确的订阅地址!");
+        return;
+      }
+      this.form.customBackend = url.origin + url.pathname + "?"
+      let param = new URLSearchParams(url.search);
+      if (param.get("target")){
+        let target = param.get("target");
+        if (target === 'surge' && param.get("ver")) {
+          // 类型为surge,有ver
+          this.form.clientType = target+"&ver="+param.get("ver");
+        } else if (target === 'surge'){
+          //类型为surge,没有ver
+          this.form.clientType = target+"&ver=4"
+        } else {
+          //类型为其他
+          this.form.clientType = target;
+        }
+      }
+      if (param.get("url")){
+        this.form.sourceSubUrl = param.get("url");
+      }
+      if (param.get("insert")){
+        this.form.insert = param.get("insert") === 'true';
+      }
+      if (param.get("config")){
+        this.form.remoteConfig = param.get("config");
+      }
+      if (param.get("exclude")){
+        this.form.excludeRemarks = param.get("exclude");
+      }
+      if (param.get("include")){
+        this.form.includeRemarks = param.get("include");
+      }
+      if (param.get("filename")){
+        this.form.filename = param.get("filename");
+      }
+      if (param.get("rename")){
+        this.form.rename = param.get("rename");
+      }
+      if (param.get("interval")){
+        this.form.interval = Math.ceil(param.get("interval")/86400) ;
+      }
+      if (param.get("dev_id")){
+        this.form.devid = param.get("dev_id");
+      }
+      if (param.get("append_type")){
+        this.form.appendType = param.get("append_type") === 'true';
+      }
+      if (param.get("tls13")){
+        this.form.tls13 = param.get("tls13");
+      }
+      if (param.get("strict")){
+        this.form.surgeForce = param.get("strict");
+      }
+      if (param.get("sort")){
+        this.form.sort = param.get("sort") === 'true';
+      }
+      if (param.get("emoji")){
+        this.form.emoji = param.get("emoji") === 'true';
+      }
+      if (param.get("list")){
+        this.form.nodeList = param.get("list") === 'true';
+      }
+      if (param.get("udp")){
+        this.form.udp = param.get("udp") === 'true';
+      }
+      if (param.get("tfo")){
+        this.form.tfo = param.get("tfo") === 'true';
+      }
+      if (param.get("expand")){
+        this.form.expand = param.get("expand") === 'true';
+      }
+      if (param.get("scv")){
+        this.form.scv = param.get("scv") === 'true';
+      }
+      if (param.get("fdn")){
+        this.form.fdn = param.get("fdn") === 'true';
+      }
+      if (param.get("surge.doh")){
+        this.form.tpl.surge.doh = param.get("surge.doh") === 'true';
+      }
+      if (param.get("clash.doh")){
+        this.form.tpl.clash.doh = param.get("clash.doh") === 'true';
+      }
+      if (param.get("new_name")){
+        this.form.new_name = param.get("new_name") === 'true';
+      }
+      this.dialogLoadConfigVisible = false;
+    },
     renderPost() {
       let data = new FormData();
       data.append("target",encodeURIComponent(this.form.clientType));
@@ -749,7 +884,7 @@ export default {
       data.append("include",encodeURIComponent(this.form.includeRemarks));
       data.append("rename",encodeURIComponent(this.form.rename));
       data.append("tls13",encodeURIComponent(this.form.tls13.toString()));
-      data.append("surgeForce",encodeURIComponent(this.form.surgeForce.toString()));
+      data.append("xudp",encodeURIComponent(this.form.xudp.toString()));
       data.append("emoji",encodeURIComponent(this.form.emoji.toString()));
       data.append("list",encodeURIComponent(this.form.nodeList.toString()));
       data.append("udp",encodeURIComponent(this.form.udp.toString()));

@@ -226,7 +226,7 @@
               </el-form-item>
               <el-form-item label-width="0px" style="text-align: center">
                 <el-button
-                    style="width: 250px"
+                    style="width: 120px"
                     type="primary"
                     @click="dialogUploadConfigVisible = true"
                     icon="el-icon-upload"

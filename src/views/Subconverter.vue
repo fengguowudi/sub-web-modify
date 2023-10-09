@@ -446,7 +446,7 @@ export default {
           "v1.mk": "https://v1.mk/short",
         },
         customBackend: {
-			"つつ-国内优化": "https://api.tsutsu.one/sub?",
+			"甲骨文后端": "http://146.56.129.39:25500/sub?",
 			"Dler官方后端": "https://api.dler.io/sub?",
 			"nameless13提供": "https://www.nameless13.com/sub?",
 			"sub-web作者提供": "https://api.wcc.best/sub?",
@@ -454,7 +454,7 @@ export default {
 			"subconverter作者提供": "https://sub.xeton.dev/sub?"
         },
         backendOptions: [
-			{value: "https://api.tsutsu.one/sub?"},
+			{value: "http://146.56.129.39:25500/sub?"},
 			{value: "https://api.dler.io/sub?"},
 			{value: "https://www.nameless13.com/sub?"},
 			{value: "https://api.wcc.best/sub?"},
@@ -512,7 +512,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "https://api.tsutsu.one/sub?",
+        customBackend: "http://146.56.129.39:25500/sub?",
         shortType: "https://d1.mk/short",
         remoteConfig: "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini",
         excludeRemarks: "",

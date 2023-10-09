@@ -468,7 +468,7 @@ export default {
               {
                 label: "Jess自用-神机规则",
                 value:
-                  "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini"
+                  "https://raw.gitmirror.com/fengguowudi/ini/main/jess-sjgz.ini"
               }
             ]
           },
@@ -478,12 +478,12 @@ export default {
               {
                 label: "酷酷精简规则",
                 value:
-                  "https://cdn.staticaly.com/gh/xiaoshenxian233/cool/rule/coolcool.ini"
+                  "https://raw.gitmirror.com/xiaoshenxian233/cool/rule/coolcool.ini"
               },
               {
                 label: "酷酷复合规则",
                 value:
-                  "https://cdn.staticaly.com/gh/xiaoshenxian233/cool/rule/complex.ini"
+                  "https://raw.gitmirror.com/xiaoshenxian233/cool/rule/complex.ini"
               }
             ]
           },
@@ -493,17 +493,17 @@ export default {
               {
                 label: "つつ-全分组",
                 value:
-                  "https://cdn.staticaly.com/gh/lhl77/sub-ini@main/tsutsu-full.ini"
+                  "https://raw.gitmirror.com/lhl77/sub-ini@main/tsutsu-full.ini"
               },
               {
                 label: "つつ-全分组-地区自动选择",
                 value:
-                  "https://cdn.staticaly.com/gh/lhl77/sub-ini@main/tsutsu-full-urltest.ini"
+                  "https://raw.gitmirror.com/lhl77/sub-ini@main/tsutsu-full-urltest.ini"
               },
               {
                 label: "つつ-超jb精简分组-含国内分流",
                 value:
-                  "https://cdn.staticaly.com/gh/lhl77/sub-ini@main/tsutsu-mini-gfw.ini"
+                  "https://raw.gitmirror.com/lhl77/sub-ini@main/tsutsu-mini-gfw.ini"
               }
             ]
           }
@@ -514,7 +514,7 @@ export default {
         clientType: "",
         customBackend: "http://146.56.129.39:25500/sub?",
         shortType: "https://d1.mk/short",
-        remoteConfig: "https://cdn.staticaly.com/gh/fengguowudi/ini/main/jess-sjgz.ini",
+        remoteConfig: "https://raw.gitmirror.com/fengguowudi/ini/main/jess-sjgz.ini",
         excludeRemarks: "",
         includeRemarks: "",
         filename: "",

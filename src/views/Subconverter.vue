@@ -444,6 +444,9 @@ export default {
         shortTypes: {
           "d1.mk": "https://d1.mk/short",
           "v1.mk": "https://v1.mk/short",
+          "dlj.tf": "https://dlj.tf/short",
+          "suo.yt": "https://suo.yt/short",
+          "sub.cm": "https://sub.cm/short",
         },
         customBackend: {
 			"甲骨文后端": "http://146.56.129.39:25500/sub?",

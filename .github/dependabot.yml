@@ -7,7 +7,6 @@ version: 2
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
-    workflow_dispatch:
     schedule:
       interval: "daily"
       timezone: "Asia/Shanghai"

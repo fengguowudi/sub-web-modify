@@ -5,15 +5,6 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      timezone: "Asia/Shanghai"
-      time: "07:00"
-    pull-request-branch-name:
-      separator: "-"
-      
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     workflow_dispatch:

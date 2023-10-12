@@ -449,7 +449,6 @@ export default {
           "sub.cm": "https://sub.cm/short",
         },
         customBackend: {
-			"甲骨文后端": "http://146.56.129.39:25500/sub?",
 			"Dler官方后端": "https://api.dler.io/sub?",
 			"nameless13提供": "https://www.nameless13.com/sub?",
 			"sub-web作者提供": "https://api.wcc.best/sub?",
@@ -457,7 +456,6 @@ export default {
 			"subconverter作者提供": "https://sub.xeton.dev/sub?"
         },
         backendOptions: [
-			{value: "http://146.56.129.39:25500/sub?"},
 			{value: "https://api.dler.io/sub?"},
 			{value: "https://www.nameless13.com/sub?"},
 			{value: "https://api.wcc.best/sub?"},
@@ -515,7 +513,7 @@ export default {
       form: {
         sourceSubUrl: "",
         clientType: "",
-        customBackend: "http://146.56.129.39:25500/sub?",
+        customBackend: "https://api.dler.io/sub?",
         shortType: "https://d1.mk/short",
         remoteConfig: "https://raw.gitmirror.com/fengguowudi/ini/main/jess-sjgz.ini",
         excludeRemarks: "",

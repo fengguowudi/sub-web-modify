@@ -1,20 +1,64 @@
-import Vue from 'vue'
-import Element from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/zh-CN'
-// import '@/assets/css/element-ui.scss'
-// import '@/assets/css/element-element-variables.scss'
+import Vue from "vue";
+import locale from "element-ui/lib/locale/lang/zh-CN";
+import {
+  Alert,
+  Button,
+  Card,
+  Checkbox,
+  Collapse,
+  CollapseItem,
+  Col,
+  Dialog,
+  Form,
+  FormItem,
+  Input,
+  Link,
+  Loading,
+  Message,
+  MessageBox,
+  Option,
+  OptionGroup,
+  Row,
+  Select,
+  TabPane,
+  Tabs,
+  Tag,
+} from "element-ui";
 
-Vue.use(Element, {
+const components = [
+  Alert,
+  Button,
+  Card,
+  Checkbox,
+  Collapse,
+  CollapseItem,
+  Col,
+  Dialog,
+  Form,
+  FormItem,
+  Input,
+  Link,
+  Option,
+  OptionGroup,
+  Row,
+  Select,
+  TabPane,
+  Tabs,
+  Tag,
+];
+
+components.forEach((component) => {
+  Vue.use(component, {
     locale,
-    size: 'small'
-})
+    size: "small",
+  });
+});
 
-Vue.use(Element.Loading.directive);
+Vue.use(Loading.directive);
 
-Vue.prototype.$loading = Element.Loading.service;
-Vue.prototype.$msgbox = Element.MessageBox;
-Vue.prototype.$alert = Element.MessageBox.alert;
-Vue.prototype.$confirm = Element.MessageBox.confirm;
-Vue.prototype.$prompt = Element.MessageBox.prompt;
-Vue.prototype.$notify = Element.Notification;
-Vue.prototype.$message = Element.Message;
+Vue.prototype.$loading = Loading.service;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$message = Message;
